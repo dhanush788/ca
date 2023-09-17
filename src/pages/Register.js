@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { db } from "../functions/auth/firebase";
 import { ref, set, push } from "firebase/database";
+import { storage } from "../functions/auth/firebase";
+import { getDownloadURL, ref as storageRef } from "firebase/storage";
+import { uploadBytes } from "firebase/storage";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -8,36 +11,54 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [college, setCollege] = useState("");
   const [year, setYear] = useState("");
+  const [file, setFile] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const uploadFile = () => {
+    if (file === null) return Promise.resolve(null);
+    const fileRef = storageRef(storage, "collegeID/" + file.name);
 
-    const dbRef = ref(db, "CA");
-
-    const data = {
-      name: name,
-      email: email,
-      phone: phone,
-      college: college,
-      year: year,
-    };
-
-    const newEntryRef = push(dbRef);
-
-    set(newEntryRef, data)
-      .then(() => {
-        alert("Form submitted");
+    // Return the promise chain here
+    return uploadBytes(fileRef, file)
+      .then((snapshot) => {
+        console.log("Image uploaded");
+        return getDownloadURL(snapshot.ref);
       })
       .catch((error) => {
-        console.log(error);
-        alert(error.message);
+        console.log("Upload failed", error);
+        throw error;
       });
+  };
 
-    setName("");
-    setEmail("");
-    setPhone("");
-    setCollege("");
-    setYear("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const downloadUrl = await uploadFile();
+
+      const dbRef = ref(db, "CA");
+
+      const data = {
+        name: name,
+        email: email,
+        phone: phone,
+        college: college,
+        year: year,
+        fileUrl: downloadUrl,
+      };
+
+      const newEntryRef = push(dbRef);
+
+      await set(newEntryRef, data);
+
+      setName("");
+      setEmail("");
+      setPhone("");
+      setCollege("");
+      setYear("");
+      setFile(null);
+    } catch (error) {
+      console.log("submission failed. error:", error);
+    }
   };
 
   //temp input styles
@@ -129,6 +150,16 @@ const Register = () => {
               value={year}
               onChange={(e) => {
                 setYear(e.target.value);
+              }}
+            />
+          </div>
+          <div style={{ marginTop: "2rem" }}>
+            <input
+              required
+              type="file"
+              style={inputStyles}
+              onChange={(e) => {
+                setFile(e.target.files[0]);
               }}
             />
           </div>
