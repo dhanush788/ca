@@ -4,6 +4,7 @@ import { ref, set, push } from "firebase/database";
 import { storage } from "../functions/auth/firebase";
 import { getDownloadURL, ref as storageRef } from "firebase/storage";
 import { uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -13,9 +14,11 @@ const Register = () => {
   const [year, setYear] = useState("");
   const [file, setFile] = useState(null);
 
+  const formRef = useRef(null);
+
   const uploadFile = () => {
     if (file === null) return Promise.resolve(null);
-    const fileRef = storageRef(storage, "collegeID/" + file.name);
+    const fileRef = storageRef(storage, `collegeID/${file.name + v4()}`);
 
     // Return the promise chain here
     return uploadBytes(fileRef, file)
@@ -49,6 +52,8 @@ const Register = () => {
       const newEntryRef = push(dbRef);
 
       await set(newEntryRef, data);
+
+      formRef.current.reset();
 
       setName("");
       setEmail("");
@@ -93,7 +98,7 @@ const Register = () => {
       >
         <h1>Dhishna</h1>
         <h2>Campuss Ambassador Registration</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={formRef}>
           <div style={{ marginTop: "2rem" }}>
             <input
               required
