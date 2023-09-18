@@ -1,9 +1,20 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+import About from "../components/About";
+import Benefits from "../components/Benefits";
+import Eligibility from "../components/Eligibility";
+import "../index.css";
 
 export default function Landing(){
     return (
-        <h1>
-            landing
-        </h1>
+        <div >
+        <Navbar/>
+        <div className="bg-line bg-black">
+
+        <About/>
+        <Benefits/>
+        <Eligibility/>
+        </div>
+        </div>
     )
 }
