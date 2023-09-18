@@ -7,6 +7,8 @@ import "../index.css";
 import Hero from "../components/Hero";
 import What from "../components/What";
 import Companies from "../components/Companies";
+import JoinUs from "../components/JoinUs";
+import Footer from "../components/Footer";
 
 export default function Landing(){
     return (
@@ -20,6 +22,8 @@ export default function Landing(){
         <What />
         <Benefits/>
         <Eligibility/>
+        <JoinUs />
+        <Footer />
         </div>
         </div>
     )
