@@ -6,6 +6,7 @@ import Eligibility from "../components/Eligibility";
 import "../index.css";
 import Hero from "../components/Hero";
 import What from "../components/What";
+import Companies from "../components/Companies";
 
 export default function Landing(){
     return (
@@ -15,6 +16,7 @@ export default function Landing(){
         <div className="bg-line bg-black">
 
         <About/>
+        <Companies />
         <What />
         <Benefits/>
         <Eligibility/>
