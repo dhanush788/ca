@@ -1,5 +1,5 @@
 import React from 'react'
-import companies from '../../assets/companies.png'
+import companies from '../assets/companies.png'
 
 const Companies = () => {
   return (

@@ -42,7 +42,7 @@
 }
 
 .gloss{
-  background: url('../assets/gloss.png');
+  background: url('assets/gloss.png');
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.1px);
@@ -51,8 +51,8 @@
 }
 
 .spacebg{
-  background: url('../assets/spacebg.png');
+  background: url('assets/spacebg.png');
   background-size: cover;
   background-repeat: no-repeat;
-  
+
 }
