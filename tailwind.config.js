@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     backgroundImage: {
-      "line": "url('/src/Frame 5.png')",
+      "line": "url('/src/assests/line.png')",
     },
   },
   plugins: [],

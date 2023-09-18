@@ -7,12 +7,14 @@ import "../index.css";
 import Hero from "../components/Hero";
 import What from "../components/What";
 import Companies from "../components/Companies";
+import Marquee from "../components/Marquee";
 
-export default function Landing(){
+export default function Landing() {
     return (
         <div >
         <Navbar/>
         <Hero />
+        <Marquee   />
         <div className="bg-line bg-black">
 
         <About/>
@@ -21,6 +23,7 @@ export default function Landing(){
         <Benefits/>
         <Eligibility/>
         </div>
+
         </div>
     )
 }
