@@ -48,6 +48,7 @@
   backdrop-filter: blur(7.1px);
   -webkit-backdrop-filter: blur(7.1px);
   border: 1px solid rgba(215, 35, 35, 0.57);
+  opacity: 90%;
 }
 
 .spacebg{

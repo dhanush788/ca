@@ -9,12 +9,14 @@ import What from "../components/What";
 import Companies from "../components/Companies";
 import JoinUs from "../components/JoinUs";
 import Footer from "../components/Footer";
+import Marquee from "../components/Marquee";
 
-export default function Landing(){
+export default function Landing() {
     return (
         <div >
         <Navbar/>
         <Hero />
+        <Marquee   />
         <div className="bg-line bg-black">
 
         <About/>
@@ -25,6 +27,7 @@ export default function Landing(){
         <JoinUs />
         <Footer />
         </div>
+
         </div>
     )
 }
