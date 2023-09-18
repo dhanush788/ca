@@ -16,7 +16,7 @@ export default function Landing() {
         <div >
         <Navbar/>
         <Hero />
-        <Marquee   />
+        <Marquee />
         <div className="bg-line bg-black">
 
         <About/>

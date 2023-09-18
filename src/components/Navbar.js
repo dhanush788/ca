@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-// import logo from "../assets/dhishna_logo_1.svg";
+import logo from "../assets/dhishna_logo_1.svg";
 
 const navLinks = [
     {
@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="sm:px-10 px-6 w-full flex items-center  py-4 bg-[#0D0D0D]  border-b-2 border-gray-300">
+        <nav className="sm:px-10 px-6 w-full flex items-center   bg-[#0D0D0D]  border-b-2 border-gray-300">
             <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
                 <div className='flex flex-row gap-4'>
 
@@ -64,8 +64,8 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex flex-row  justify-center align-center my-auto">
-                        <img src="logo" alt="logo" className="w-9 h-9 object-contain" />
-                        <div className='flex flex-col'>
+                        <img src={logo} alt="logo" className="w-24 h-24 object-contain " />
+                        <div className='flex flex-col my-auto'>
                             <p className="text-white text-lg font-extrabold cursor-pointer tracking-[0.45rem] ">DISHNA</p>
                             <p className='text-white font-medium text-[10px]'>SOE | CUSAT</p>
                         </div>
