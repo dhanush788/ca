@@ -20,6 +20,9 @@ const Register = () => {
   const [year, setYear] = useState("");
   const [file, setFile] = useState(null);
 
+  //wait message on submit
+  const [wait, setWait] = useState(false);
+
   const formRef = useRef(null);
 
   const uploadFile = () => {
@@ -46,6 +49,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setWait(true);
 
     try {
       const downloadUrl = await uploadFile();
@@ -71,6 +75,7 @@ const Register = () => {
       setCollege("");
       setYear("");
       setFile(null);
+      setWait(false);
     } catch (error) {
       console.log("submission failed. error:", error);
     }
@@ -216,10 +221,14 @@ const Register = () => {
                   SIGN UP
                 </p>
               </div>
-              Submit
             </button>
           </div>
         </form>
+        {wait && (
+          <p className="text-white font-sans font-semibold">
+            Submitting form...please wait
+          </p>
+        )}
       </div>
     </div>
   );
