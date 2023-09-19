@@ -76,14 +76,6 @@ const Register = () => {
     }
   };
 
-  //temp input styles
-  const inputStyles = {
-    border: "solid",
-    borderColor: "black",
-    borderRadius: "1rem",
-    padding: "0.5rem",
-  };
-
   return (
     <div className="flex flex-col items-center h-full">
       <img
@@ -110,13 +102,13 @@ const Register = () => {
         //   zIndex: 10,
         // }}
       >
-        <h1 className="text-white font-sans font-bold tracking-widest text-4xl my-3">
+        <h1 className="text-white font-sans font-bold tracking-widest md:text-4xl text-2xl my-3">
           DHISHNA
         </h1>
-        <h2 className="text-white font-sans font-bold text-3xl my-2">
+        <h2 className="text-white font-sans font-bold md:text-3xl text-lg my-2">
           CAMPUS AMBASSADOR REGISTRATION
         </h2>
-        <form onSubmit={handleSubmit} ref={formRef} className="w-full">
+        <form onSubmit={handleSubmit} ref={formRef} className="w-full px-4">
           <div className="mt-10">
             <input
               required
@@ -197,7 +189,7 @@ const Register = () => {
                 disabled
               />
               <button
-                className="border border-white rounded-3xl text-white text-sm w-fit p-1 ml-auto"
+                className="border border-gray-400 rounded-3xl text-white text-sm md:w-fit w-24 p-1 px-2 ml-auto"
                 onClick={(e) => {
                   e.preventDefault();
                   const uploadButton = document.querySelector("#upload");
