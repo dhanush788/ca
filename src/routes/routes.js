@@ -22,6 +22,7 @@ const AllRoutes = () => {
         }
       />
       <Route path="*" element={<p>There's nothing here: 404!</p>} />
+      <Route path="/register" element={<Register />} />
     </Routes>
   );
 };
