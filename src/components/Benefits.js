@@ -22,7 +22,7 @@ const benefit = [
 const Prizes = ({ amount, position, color }) => {
 
     return (
-        <div className="relative  w-64 rounded-lg bg-[#222222] overflow-hidden p-4">
+        <div className="relative  w-64 rounded-lg bg-[#222222] overflow-hidden p-4 z-[1]">
             <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">{amount}</h2>
             <p className="text-white font-semibold text-[15px] tracking-widest">GOODIES FOR
                 <span className="text-[#FF884B]"> {position}</span>
@@ -42,7 +42,7 @@ const Benefits = () => {
                         <Prizes key={i} amount={benefit.amount} position={benefit.position} color={benefit.color} />
                     ))}
                 </div>
-                <div className='mid-glow  absolute mt-[250px]  h-56'></div>
+                <div className='mid-glow z-[0] absolute mt-[250px]  h-56'></div>
             </div>
             <div className='z-[2]'>
 

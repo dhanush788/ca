@@ -5,7 +5,7 @@ import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact
 
 const What = () => {
   return (
-    <div className="px-10 md:px-20 py-20 bg-opacity-70 bg-black">
+    <div className="px-10 md:px-20 py-20  bg-black bg-opacity-90">
         <h1 className='text-4xl md:text-5xl text-white font-extrabold text-center'>WHAT YOU SHOULD DO</h1>
         <div className='my-20'>
             <div className='ml-0 md:ml-20'>

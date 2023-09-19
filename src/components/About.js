@@ -13,7 +13,7 @@ const About = () => {
             </p>
             <p className="text-white font-bold text-[18px] max-w-xl tracking-wide">We present to you, Dhishna.</p>
         </div>
-        <div className='left-glow relative h-56 '>
+        <div className='left-glow z-[2] relative h-56 '>
         </div>
         </div>
     )
