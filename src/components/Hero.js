@@ -24,21 +24,11 @@ const Hero = () => {
         <h1 className='my-5 md:text-8xl text-4xl text-white font-bold text-white text-center my-5'>CAMPUS AMBASSADOR</h1>
         <p className='text-center text-white font-md lg:text-3xl md:text-2xl text-md my-5'>Be the emissary of Dhishna 2023</p>
         <div className='flex md:flex-row flex-col justify-center my-16'>
-            <div className='ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10' >
 
-                {/* <div class="absolute top-0 left-0 w-8 h-8 bg-purple-950 transform rotate-45 -translate-x-7 -translate-y-5"></div>
+            <button className='cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl'>SIGN UP</button>
 
-                <div class="absolute bottom-0 right-0 w-8 h-8 bg-purple-950 transform rotate-45 translate-x-7 translate-y-5"></div> */}
-
-                <p className='text-black text-center font-bold text-md md:text-xl'>SIGN UP</p>
-            </div>
-            <div className='ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10'>
-                {/* <div class="absolute top-0 left-0 w-8 h-8 bg-purple-950 transform rotate-45 -translate-x-5 -translate-y-5"></div>
-
-                <div class="absolute bottom-0 right-0 w-8 h-8 bg-purple-950 transform rotate-45 translate-x-5 translate-y-5"></div> */}
-
-                <p className='text-white text-center font-bold text-md text-xl'>EXPLORE</p>
-            </div>
+            <button className='whiteCornerCutBtn rounded-[5px] border-2 border-white ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-white text-center font-bold text-md text-xl'>EXPLORE</button>
+            
         </div>
         <div className='flex justify-center my-20'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-x-60 gap-y-10'>
