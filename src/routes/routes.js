@@ -6,6 +6,7 @@ import Home from "../pages/home";
 import ProtectedRoute from "./protected";
 import Register from "../pages/Register";
 import { notRegistered } from "../functions/auth/signIn";
+import Rules from "../pages/Rules";
 
 const AllRoutes = () => {
   const { user, loading } = React.useContext(UserContext);
@@ -23,6 +24,7 @@ const AllRoutes = () => {
       />
       <Route path="*" element={<p>There's nothing here: 404!</p>} />
       <Route path="/register" element={<Register />} />
+      <Route path="/rules" element={<Rules />} />
     </Routes>
   );
 };
