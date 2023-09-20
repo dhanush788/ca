@@ -24,9 +24,12 @@ const Prizes = ({ amount, position, color }) => {
     return (
         <div className="relative  w-64 rounded-lg bg-[#222222] overflow-hidden p-4 z-[1]">
             <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">{amount}</h2>
-            <p className="text-white font-semibold text-[15px] tracking-widest">GOODIES FOR
+            <div className="flex justify-center">
+                <p className="text-white font-semibold text-[15px] whitespace-nowrap tracking-widest w-fit">GOODIES FOR
+                </p>
                 <span className="text-[#FF884B]"> {position}</span>
-            </p>
+            </div>
+
         </div>
     )
 }

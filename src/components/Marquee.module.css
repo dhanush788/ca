@@ -21,7 +21,7 @@
     display: block;
     width: 200%;
     position: absolute;
-    animation: marquee 10s linear infinite;
+    animation: marquee 20s linear infinite;
 }
 
 span {
