@@ -27,15 +27,12 @@ const Register = () => {
 
   const formRef = useRef(null);
 
-  const uploadFile = () => {
-    if (file === null) return Promise.resolve(null);
-    const split = file.name.split(".");
-    // const name = split.slice(0, -1).join("")
-    const extension = split.slice(-1)[0];
-    const fileRef = storageRef(
-      storage,
-      `collegeID/${user.email + "-" + user.uid + extension}`
-    );
+    const uploadFile = () => {
+        if (file === null) return Promise.resolve(null);
+        const split = file.name.split('.');
+        // const name = split.slice(0, -1).join("")
+        const extension = split.slice(-1)[0]
+        const fileRef = storageRef(storage, `collegeID/${user.email}-${user.uid}.${extension}`);
 
     // Return the promise chain here
     return uploadBytes(fileRef, file)
