@@ -3,6 +3,8 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from "../assets/dhishna_logo_1.svg";
+import {signInWithGoogle} from "../functions/auth/signIn";
+import {useNavigate} from "react-router-dom";
 
 const navLinks = [
     {
@@ -21,12 +23,14 @@ const navLinks = [
 
 const Navbar = () => {
 
+    const navigate = useNavigate();
+
     const [active, setActive] = useState("");
     const [toggle, setToggle] = useState(false);
 
 
     return (
-        <nav className={`sm:px-10 px-6 w-full flex items-center ${toggle && "fixed z-[20]"} h-[100px] bg-[#0D0D0D]  border-b-2 border-gray-300`}>
+        <nav className={`sm:px-10 px-6 w-full flex items-center ${toggle? "fixed z-[20]":""} h-[100px] bg-[#0D0D0D]  border-b-2 border-gray-300`}>
             <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
                 <div className='flex flex-row gap-4'>
 
@@ -86,7 +90,7 @@ const Navbar = () => {
                         </li>
                     ))}
                 </ul>
-                <button class="bg-white hidden sm:flex py-2.5 px-4 text-[12px] font-extrabold rounded uppercase tracking-[0.25rem]">Sign in</button>
+                <button onClick={signInWithGoogle(()=>navigate("/register"))} class="bg-white hidden sm:flex py-2.5 px-4 text-[12px] font-extrabold rounded uppercase tracking-[0.25rem]">Sign in</button>
 
             </div>
         </nav>

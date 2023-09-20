@@ -41,16 +41,16 @@ const Hero = () => {
             </div>
         </div>
         <div className='flex justify-center my-20'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-x-60 gap-y-10'>
-                <div className='md:px-10 px-7 md:py-12 py-9 rounded-[50%] bg-white'>
+            <div className='grid grid-cols-1 md:grid-cols-3 md:gap-x-14 lg:gap-x-48 gap-y-10'>
+                <div className='md:px-10 px-7 md:py-12 py-9 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-5xl text-center'>{animateCountUp && <CountUp end={30} duration={3} />}+</h3>
                     <p className='text-black text-md my-2 text-center font-semibold'>WORKSHOPS</p>
                 </div>
-                <div className='md:px-10 px-7 md:py-10 py-9 rounded-[50%] bg-white'>
+                <div className='md:px-10 px-7 md:py-10 py-9 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-5xl text-center'>{animateCountUp && <CountUp end={12} duration={4} />}+</h3>
                     <p className='text-black text-md my-2 text-center font-semibold'>LECTURES</p>
                 </div>
-                <div className='md:px-10 px-7 md:py-10 py-9 rounded-[50%] bg-white'>
+                <div className='md:px-10 px-7 md:py-10 py-9 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-5xl text-center'>{animateCountUp && <CountUp end={44} duration={5} />}+</h3>
                     <p className='text-black text-md my-2 text-center font-semibold'>SPONSORS</p>
                 </div>

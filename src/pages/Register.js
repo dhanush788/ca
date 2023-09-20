@@ -110,7 +110,7 @@ const Register = () => {
         <h2 className="text-white font-sans font-bold md:text-3xl text-lg my-2">
           CAMPUS AMBASSADOR REGISTRATION
         </h2>
-        <form onSubmit={handleSubmit} ref={formRef} className="w-full px-4">
+        <form onSubmit={handleSubmit} ref={formRef} className="w-full px-4 bg-black/75 rounded-3xl px-11">
           <div className="mt-10">
             <input
               required
