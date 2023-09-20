@@ -1,5 +1,7 @@
 import React from "react";
 import {Navigate} from 'react-router-dom';
+import Center from "../components/Center";
+import {Rings} from "react-loader-spinner";
 
 const ProtectedRoute = ({
                             user,
@@ -18,7 +20,19 @@ const ProtectedRoute = ({
     }, [user])
 
     if (loading)
-        return <>loading...</>
+        return <Center>
+            <Rings
+                style={{alignItems:"center"}}
+                height="80"
+                width="80"
+                color="#FF6D2B"
+                radius="6"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="rings-loading"
+            />
+        </Center>
     if (!user || !ch) {
         return <Navigate to={redirectPath} replace/>;
     }
