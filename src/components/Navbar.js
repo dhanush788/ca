@@ -1,10 +1,14 @@
 import React from "react";
-import { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
+import {useState} from "react";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {AiOutlineClose} from "react-icons/ai";
 import {signInWithGoogle} from "../functions/auth/signIn";
 import logo from "../assets/dhishna_logo_1.svg";
 import {useNavigate} from "react-router-dom";
+import {signOut} from "firebase/auth";
+import {auth} from "../functions/auth/firebase";
+import {UserContext} from "../functions/auth/userContext";
+
 
 const navLinks = [
     {
@@ -26,10 +30,14 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+    const {user, loading} = React.useContext(UserContext);
     const navigate = useNavigate();
     const [active, setActive] = useState("");
     const [toggle, setToggle] = useState(false);
-
+    const signOutFn = () => {
+        signOut(auth).then(() => navigate("/")).catch(e=>console.log(e))
+    }
+    const signInFn = signInWithGoogle(() => navigate("/register"))
     return (
         <nav
             className={`sm:px-10 px-6 w-full flex items-center ${
@@ -41,13 +49,13 @@ const Navbar = () => {
                     <div className="md:hidden flex flex-1  items-center">
                         {toggle ? (
                             <AiOutlineClose
-                                style={{ color: "#fff" }}
+                                style={{color: "#fff"}}
                                 className="w-[28px] h-[28px] object-contain"
                                 onClick={() => setToggle(!toggle)}
                             />
                         ) : (
                             <GiHamburgerMenu
-                                style={{ color: "#fff" }}
+                                style={{color: "#fff"}}
                                 className="w-[28px] h-[28px] object-contain"
                                 onClick={() => setToggle(!toggle)}
                             />
@@ -80,7 +88,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex flex-row  justify-center align-center my-auto">
-                        <img src={logo} alt="logo" className="w-24 h-24 object-contain " />
+                        <img src={logo} alt="logo" className="w-24 h-24 object-contain "/>
                         <div className="flex flex-col my-auto">
                             <p className="text-white text-lg font-extrabold cursor-pointer tracking-[0.45rem] ">
                                 DHISHNA
@@ -103,9 +111,9 @@ const Navbar = () => {
                     ))}
                 </ul>
                 <button
-                    onClick={signInWithGoogle(()=>navigate("/register"))}
+                    onClick={user ? signOutFn : signInFn}
                     class="bg-white hidden sm:flex py-2.5 px-4 text-[12px] font-extrabold rounded uppercase tracking-[0.25rem]">
-                    Sign in
+                    {user ? "Sign out" : "Sign in"}
                 </button>
             </div>
         </nav>

@@ -8,16 +8,26 @@ const ProtectedRoute = ({
                             loading,
                             redirectPath = '/',
                             children,
-                            check
+                            check,
+                            checkRedirect,
+                            invert = false
                         }) => {
+    if(!checkRedirect)
+        checkRedirect = redirectPath;
+
+    console.log(checkRedirect)
     const [ch, updateCheck] = React.useState(!check)
 
     React.useEffect(() => {
         if (typeof check === "function" && !!user)
             Promise.resolve(check(user)).then((val) => {
                 updateCheck(!!val)
+                console.log("val", val)
             });
+
     }, [user])
+
+    console.log(loading)
 
     if (loading)
         return <Center>
@@ -33,11 +43,17 @@ const ProtectedRoute = ({
                 ariaLabel="rings-loading"
             />
         </Center>
-    if (!user || !ch) {
-        return <Navigate to={redirectPath} replace/>;
+
+    if (!user) {
+            return <Navigate to={redirectPath} replace/>;
     }
+
+    console.log(checkRedirect)
+    if(!ch)
+        return <Navigate to={checkRedirect} replace/>;
 
     return children;
 };
 
 export default ProtectedRoute
+
