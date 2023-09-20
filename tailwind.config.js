@@ -4,9 +4,8 @@ module.exports = {
   theme: {
     extend: {},
     backgroundImage: {
-      "line": "url('/src/assets/line.png')",
+      line: "url('/src/assets/line.png')",
     },
   },
   plugins: [],
-}
-
+};

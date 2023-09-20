@@ -12,22 +12,20 @@ import Footer from "../components/Footer";
 import Marquee from "../components/Marquee";
 
 export default function Landing() {
-    return (
-        <div >
-        <Navbar/>
-        <Hero />
-        <Marquee />
-        <div className="bg-line bg-black">
-
-        <About/>
+  return (
+    <div>
+      <Navbar />
+      <Hero />
+      <Marquee />
+      <div className="bg-line bg-black">
+        <About />
         <Companies />
         <What />
-        <Benefits/>
-        <Eligibility/>
+        <Benefits />
+        <Eligibility />
         <JoinUs />
         <Footer />
-        </div>
-
-        </div>
-    )
+      </div>
+    </div>
+  );
 }

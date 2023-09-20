@@ -12,15 +12,11 @@ function App() {
         console.log(user)
     }, [user])
     return (
-        <html lang="en">
-        <body className=" ">
         <BrowserRouter>
             <UserContext.Provider value={{user, loading}}>
                 <AllRoutes/>
             </UserContext.Provider>
         </BrowserRouter>
-        </body>
-        </html>
     )
 }
 

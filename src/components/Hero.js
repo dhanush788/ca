@@ -32,17 +32,18 @@ const Hero = () => {
         </div>
         <div className='my-5 md:my-20'>
             <div className='flex flex-wrap justify-around'>
-                <div className='md:px-10 px-4 md:py-12 py-7 rounded-[50%] bg-white'>
+                <div className='md:px-10 px-4 md:py-12 py-7 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-xl md:text-5xl text-center'>{animateCountUp && <CountUp end={30} duration={3} />}+</h3>
                     <p className='text-black text-sm md:text-md my-2 text-center font-semibold'>WORKSHOPS</p>
                 </div>
-                <div className='md:px-10 px-6 md:py-12 py-7 rounded-[50%] bg-white'>
+                <div className='md:px-10 px-6 md:py-12 py-7 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-xl md:text-5xl text-center'>{animateCountUp && <CountUp end={12} duration={4} />}+</h3>
                     <p className='text-black text-sm md:text-md my-2 text-center font-semibold'>LECTURES</p>
                 </div>
-                <div className='md:px-10 px-6 md:py-12 py-8 rounded-[50%] bg-white'>
+                <div className='md:px-10 px-6 md:py-12 py-8 rounded-[50%] bg-white flex flex-col content-center justify-center'>
                     <h3 className='text-black font-semibold text-xl md:text-5xl text-center'>{animateCountUp && <CountUp end={44} duration={5} />}+</h3>
                     <p className='text-black text-sm md:text-md my-2 text-center font-semibold'>SPONSORS</p>
+
                 </div>
             </div>    
         </div>
