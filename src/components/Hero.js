@@ -17,8 +17,8 @@ const Hero = () => {
         };
       }, []);
   return (
-    <div className='spacebg'>
-    <div className='px-20 py-20 bg-prple-950'>
+    <div className='spacebg md:h-screen'>
+    <div className='px-8 md:px-20 py-10 '>
         {/* <div className='bg-black bg-opacity-50 absolute z-[20] h-[100%] w-screen left-0 top-0'></div> */}
         <h1 className='my-5 md:text-8xl text-4xl text-white font-bold text-white text-center my-5'>DHISHNA</h1>
         <h1 className='my-5 md:text-8xl text-4xl text-white font-bold text-white text-center my-5'>CAMPUS AMBASSADOR</h1>
