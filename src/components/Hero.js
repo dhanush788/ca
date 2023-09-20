@@ -30,15 +30,13 @@ const Hero = () => {
           Be the emissary of Dhishna 2023
         </p>
         <div className="flex md:flex-row flex-col justify-center my-16">
-          <div className="ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10">
-            {/* <div class="absolute top-0 left-0 w-8 h-8 bg-purple-950 transform rotate-45 -translate-x-7 -translate-y-5"></div>
-
-                <div class="absolute bottom-0 right-0 w-8 h-8 bg-purple-950 transform rotate-45 translate-x-7 translate-y-5"></div> */}
+          {/* <div className="ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10">
+            
 
             <p className="text-black text-center font-bold text-md md:text-xl">
               SIGN UP
             </p>
-          </div>
+          </div> */}
           <div className="ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10">
             {/* <div class="absolute top-0 left-0 w-8 h-8 bg-purple-950 transform rotate-45 -translate-x-5 -translate-y-5"></div>
 
