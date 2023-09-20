@@ -1,9 +1,10 @@
+
 import React from "react";
 import {useState} from "react";
 import {GiHamburgerMenu} from "react-icons/gi";
 import {AiOutlineClose} from "react-icons/ai";
 import {signInWithGoogle} from "../functions/auth/signIn";
-import logo from "../assets/dhishna_logo_1.svg";
+import logo from "../assets/dhishna_logo.png";
 import {useNavigate} from "react-router-dom";
 import {signOut} from "firebase/auth";
 import {auth} from "../functions/auth/firebase";
