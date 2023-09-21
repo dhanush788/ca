@@ -111,9 +111,7 @@ const Navbar = () => {
               <a
                 target={nav.id === "Contact" ? "_blank" : ""}
                 href={
-                  nav.id === "Contact"
-                    ? "https://wa.me/+919061071530"
-                    : `${nav.id}`
+                  nav.id === "Contact" ? "mailto:ca@dhishna.org" : `${nav.id}`
                 }
               >
                 {nav.title}
