@@ -26,7 +26,6 @@ export const signInWithGoogle = (onSuccess = () => {
 
 
 export async function notRegistered(user) {
-    console.log("checking if registered")
     const userId = user.uid;
     const dbRef = ref(db)
 

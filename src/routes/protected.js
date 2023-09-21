@@ -19,7 +19,6 @@ const ProtectedRoute = ({
     const [ch, updateCheck] = React.useState(!check)
     const [chLoading, updateChLoading] = React.useState(!!check)
 
-    console.log(print, !!user, ch, loading, chLoading)
 
     React.useEffect(() => {
         if (typeof check === "function" && !!user)
