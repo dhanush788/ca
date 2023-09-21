@@ -81,7 +81,17 @@ const Navbar = () => {
                       setActive(nav.title);
                     }}
                   >
-                    <a href={`#${nav.id}`}>{nav.title}</a>
+                    {/* <a href={`#${nav.id}`}>{nav.title}</a> */}
+                    <a
+                      target={nav.id === "Contact" ? "_blank" : ""}
+                      href={
+                        nav.id === "Contact"
+                          ? "mailto:ca@dhishna.org"
+                          : `${nav.id}`
+                      }
+                    >
+                      {nav.title}
+                    </a>
                   </li>
                 ))}
               </ul>

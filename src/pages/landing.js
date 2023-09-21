@@ -19,7 +19,7 @@ export default function Landing() {
       <Marquee />
       <div className="bg-line bg-black">
         <About />
-        <Companies />
+        {/* <Companies /> */}
         <What />
         <Benefits />
         <Eligibility />
