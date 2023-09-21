@@ -7,10 +7,11 @@ import ProtectedRoute from "./protected";
 import Register from "../pages/Register";
 import {notRegistered} from "../functions/auth/signIn";
 import Rules from "../pages/Rules";
+import Leaderboard from "../pages/Leaderboard";
 
 const AllRoutes = () => {
     const {user, loading} = React.useContext(UserContext);
-    console.log(user)
+
     return (
         <Routes>
             <Route index element={
@@ -40,6 +41,9 @@ const AllRoutes = () => {
                     <Rules/>
                  </ProtectedRoute>
             }/>
+
+            <Route path="/leaderboard" element={<Leaderboard />} />
+
         </Routes>
     );
 };
