@@ -50,6 +50,8 @@ const ProtectedRoute = ({
     if(invert){
         if(user)
             return <Navigate to={redirectPath} replace/>;
+        else
+            return children;
     }
 
     if (!user) {
