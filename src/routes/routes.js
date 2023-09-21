@@ -14,9 +14,9 @@ const AllRoutes = () => {
     return (
         <Routes>
             <Route index element={
-                // <ProtectedRoute user={user} loading={loading} redirectPath={"/rules"} invert>
+                <ProtectedRoute user={user} loading={loading} redirectPath={"/rules"} invert>
                     <Landing/>
-                // </ProtectedRoute>
+                </ProtectedRoute>
             }/>
             <Route
                 path="home"
@@ -29,16 +29,16 @@ const AllRoutes = () => {
             <Route path="*" element={<p>There's nothing here: 404!</p>}/>
             <Route path="/register" element={
                 <ProtectedRoute user={user} loading={loading} redirectPath={"/"} check={notRegistered}
-                                checkRedirect="/rules">
+                                checkRedirect="/rules" print={"register"}>
                     <Register/>
                 </ProtectedRoute>
             }
             />
 
             <Route path="/rules" element={
-                <ProtectedRoute user={user} loading={loading} redirectPath={"/"}>
+                <ProtectedRoute user={user} loading={loading} redirectPath={"/"} print={"rules"}>
                     <Rules/>
-                // </ProtectedRoute>
+                 </ProtectedRoute>
             }/>
         </Routes>
     );
