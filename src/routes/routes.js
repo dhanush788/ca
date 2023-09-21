@@ -14,9 +14,9 @@ const AllRoutes = () => {
     return (
         <Routes>
             <Route index element={
-                <ProtectedRoute user={user} loading={loading} redirectPath={"/rules"} invert>
+                // <ProtectedRoute user={user} loading={loading} redirectPath={"/rules"} invert>
                     <Landing/>
-                </ProtectedRoute>
+                 // </ProtectedRoute>
             }/>
             <Route
                 path="home"
