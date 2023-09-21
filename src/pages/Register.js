@@ -66,7 +66,7 @@ const Register = () => {
 
             await set(dbRef, data);
 
-            const request = new Request("http://actions.dhishna.org/reg", {
+            const request = new Request("https://actions.dhishna.org/reg", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Specify JSON content type
