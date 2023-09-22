@@ -58,6 +58,21 @@ const Register = () => {
 
       const dbRef = ref(db, "CA/" + user.uid);
 
+      //Date and time of registration
+      const timestamp = Date.now();
+      const date = new Date(timestamp);
+
+      // Use the Date object's methods to format the date and time
+      const Year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-based, so add 1
+      const day = date.getDate().toString().padStart(2, "0");
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+      const seconds = date.getSeconds().toString().padStart(2, "0");
+
+      // Create a human-readable date and time string
+      const formattedDateTime = `${Year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
       const data = {
         name: name,
         email: email,
@@ -65,7 +80,7 @@ const Register = () => {
         college: college,
         year: year,
         fileUrl: downloadUrl,
-        timeStamp: Date.now(),
+        timeStamp: formattedDateTime,
       };
 
       await set(dbRef, data);
