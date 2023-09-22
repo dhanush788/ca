@@ -74,7 +74,7 @@ const Benefits = () => {
       </div>
       <div className="z-[2]">
         <p className="neon-yellow-p text-[#F0FF59] text-[18px] max-w-lg font-medium pt-12 tracking-widest ">
-          Special certificate for top 20 people
+          Special certificate for top 10 people
           <p>
             Certificate for those who completed a certain tier (% of work) Extra
             benefits for excellence in work.
