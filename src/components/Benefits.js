@@ -80,10 +80,10 @@ const Benefits = () => {
           Free access to Dhishna ProShows
         </p>
         <p className=" text-[#F0FF59] text-[18px] max-w-lg font-medium pt-12 tracking-widest ">
-          Special certificate for top 10 people
+          Top 10 people will receive a special certificate
           <p>
-            Certificate for those who completed a certain tier (% of work) Extra
-            benefits for excellence in work.
+            Certificate for individuals who finished a specific tier (percentage
+            of work) Extra rewards for performing well at work.
           </p>
         </p>
       </div>
