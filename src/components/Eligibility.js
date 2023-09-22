@@ -6,7 +6,7 @@ const Eligibility = () => {
       <h2 className="text-white font-black md:text-[48px] sm:text-[46px]  text-[40px] pb-4 tracking-wide text-center">
         ELIGIBILITY
       </h2>
-      <p className="neon-yellow-p text-[#F0FF59] text-[18px] max-w-4xl font-medium py-8 text-center tracking-widest outline-white	">
+      <p className=" text-[#F0FF59] text-[18px] max-w-4xl font-medium py-8 text-center tracking-widest outline-white	">
         Students currently enrolled in recognized institutions are eligible to
         apply for Dhishna.{" "}
         <p>
