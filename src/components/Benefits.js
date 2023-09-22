@@ -15,41 +15,41 @@ const benefit = [
   },
 ];
 
-// const Prizes = ({ amount, position, color }) => {
-//   const memoizedAmount = useMemo(() => amount, [amount]);
-//   const memoizedPosition = useMemo(() => position, [position]);
+const Prizes = ({ amount, position, color }) => {
+  const memoizedAmount = useMemo(() => amount, [amount]);
+  const memoizedPosition = useMemo(() => position, [position]);
 
-//   return (
-//     <React.Fragment>
-//       <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">
-//         {memoizedAmount}
-//       </h2>
-//       <div className="flex justify-center">
-//         <p className="text-white font-semibold text-[15px] whitespace-nowrap tracking-widest w-fit">
-//           GOODIES FOR
-//         </p>
-//         <span className="text-[#FF884B]"> {memoizedPosition}</span>
-//       </div>
-//     </React.Fragment>
-//   );
-// };
+  return (
+    <React.Fragment>
+      <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">
+        {memoizedAmount}
+      </h2>
+      <div className="flex justify-center">
+        <p className="text-white font-semibold text-[15px] whitespace-nowrap tracking-widest w-fit">
+          GOODIES FOR
+        </p>
+        <span className="text-[#FF884B]"> {memoizedPosition}</span>
+      </div>
+    </React.Fragment>
+  );
+};
 
 const Benefits = () => {
-  // const memoizedPrizes = useCallback(
-  //   () => (
-  //     <React.Fragment>
-  //       {benefit.map((benefit, i) => (
-  //         <Prizes
-  //           key={i}
-  //           amount={benefit.amount}
-  //           position={benefit.position}
-  //           color={benefit.color}
-  //         />
-  //       ))}
-  //     </React.Fragment>
-  //   ),
-  //   [benefit]
-  // );
+  const memoizedPrizes = useCallback(
+    () => (
+      <React.Fragment>
+        {benefit.map((benefit, i) => (
+          <Prizes
+            key={i}
+            amount={benefit.amount}
+            position={benefit.position}
+            color={benefit.color}
+          />
+        ))}
+      </React.Fragment>
+    ),
+    [benefit]
+  );
 
   return (
     <div className="w-full flex items-center text-center flex-col py-24 px-6 sm:px-10 bg-black relative  bg-opacity-90 ">
@@ -60,7 +60,7 @@ const Benefits = () => {
         <h2 className=" text-[#E5F358] font-black md:text-[50px] sm:text-[46px] text-[38px] pb-6 tracking-wider">
           PRICES WORTH ₹50K
         </h2>
-        {/* <div className="w-full flex justify-around items-center max-w-7xl gap-y-6 flex-wrap py-10 ">
+        <div className="w-full flex justify-around items-center max-w-7xl gap-y-6 flex-wrap py-10 ">
           {benefit.map((benefit, i) => (
             <Prizes
               key={i}
@@ -69,7 +69,7 @@ const Benefits = () => {
               color={benefit.color}
             />
           ))}
-        </div> */}
+        </div>
         <div className="mid-glow z-[0] absolute mt-[250px]  h-56"></div>
       </div>
       <div className="z-[2]">
