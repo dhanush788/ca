@@ -21,14 +21,16 @@ const Prizes = ({ amount, position, color }) => {
 
   return (
     <React.Fragment>
-      <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">
-        {memoizedAmount}
-      </h2>
-      <div className="flex justify-center">
-        <p className="text-white font-semibold text-[15px] whitespace-nowrap tracking-widest w-fit">
-          GOODIES FOR
-        </p>
-        <span className="text-[#FF884B]"> {memoizedPosition}</span>
+      <div className="relative hover:scale-110 cardShadow w-64 rounded-lg bg-[#222222] overflow-hidden p-4 z-[1]">
+        <h2 className="text-[#FF884B] text-[36px] font-black tracking-wide mb-2">
+          {memoizedAmount}
+        </h2>
+        <div className="flex justify-center">
+          <p className="text-white font-semibold text-[15px] whitespace-nowrap tracking-widest w-fit">
+            GOODIES FOR
+          </p>
+          <span className="text-[#FF884B]"> {memoizedPosition}</span>
+        </div>
       </div>
     </React.Fragment>
   );
