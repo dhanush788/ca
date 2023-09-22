@@ -15,7 +15,7 @@ const Register = () => {
   const { user, loading } = React.useContext(UserContext);
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState("");
   const [college, setCollege] = useState("");
   const [year, setYear] = useState("");
@@ -67,8 +67,37 @@ const Register = () => {
         fileUrl: downloadUrl,
         timeStamp: Date.now(),
       };
+      const data = {
+        name: name,
+        email: email,
+        phone: phone,
+        college: college,
+        year: year,
+        fileUrl: downloadUrl,
+      };
 
       await set(dbRef, data);
+
+      const request = new Request("https://actions.dhishna.org/reg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Specify JSON content type
+        },
+        body: JSON.stringify({ id: user.uid }), // Convert data to JSON string
+      });
+
+      // Send the POST request
+      fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            return; // Parse response JSON if the request was successful
+          } else {
+            throw new Error("Failed to send mail");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
 
       formRef.current.reset();
 
@@ -138,6 +167,7 @@ const Register = () => {
                   required
                   className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                   placeholder="Email"
+                  disabled
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);

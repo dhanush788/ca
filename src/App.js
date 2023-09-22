@@ -9,8 +9,7 @@ import AllRoutes from "./routes/routes";
 function App() {
     const {user, loading} = useFirebaseAuth()
     React.useEffect(() => {
-        console.log(user)
-    }, [user])
+        }, [user])
     return (
         <BrowserRouter>
             <UserContext.Provider value={{user, loading}}>
