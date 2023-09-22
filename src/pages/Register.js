@@ -67,14 +67,6 @@ const Register = () => {
         fileUrl: downloadUrl,
         timeStamp: Date.now(),
       };
-      const data = {
-        name: name,
-        email: email,
-        phone: phone,
-        college: college,
-        year: year,
-        fileUrl: downloadUrl,
-      };
 
       await set(dbRef, data);
 
