@@ -58,7 +58,7 @@ const Benefits = () => {
           BENEFITS AND REWARDS
         </h2>
         <h2 className="neon-yellow text-[#E5F358] font-black md:text-[50px] sm:text-[46px] text-[38px] pb-6 tracking-wider">
-          PRICES WORTH ₹30K
+          PRICES WORTH ₹50K
         </h2>
         {/* <div className="w-full flex justify-around items-center max-w-7xl gap-y-6 flex-wrap py-10 ">
           {benefit.map((benefit, i) => (
@@ -73,6 +73,12 @@ const Benefits = () => {
         <div className="mid-glow z-[0] absolute mt-[250px]  h-56"></div>
       </div>
       <div className="z-[2]">
+        <p className="neon-yellow-p text-[#F0FF59] text-[18px] max-w-lg font-medium pt-12 tracking-widest ">
+          Gift Hampers for completing certain targets.
+        </p>
+        <p className="neon-yellow-p text-[#F0FF59] text-[18px] max-w-lg font-medium pt-12 tracking-widest ">
+          Free access to Dhishna ProShows
+        </p>
         <p className="neon-yellow-p text-[#F0FF59] text-[18px] max-w-lg font-medium pt-12 tracking-widest ">
           Special certificate for top 10 people
           <p>
