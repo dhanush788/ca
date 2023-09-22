@@ -17,14 +17,14 @@ const AllRoutes = () => {
       <Route
         index
         element={
-          <ProtectedRoute
-            user={user}
-            loading={loading}
-            redirectPath={"/rules"}
-            invert
-          >
-            <Landing />
-          </ProtectedRoute>
+          //   <ProtectedRoute
+          //     user={user}
+          //     loading={loading}
+          //     redirectPath={"/rules"}
+          //     invert
+          //   >
+          <Landing />
+          //   </ProtectedRoute>
         }
       />
       <Route
