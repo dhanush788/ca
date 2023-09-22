@@ -1,4 +1,5 @@
 import React from "react";
+import brochure from "../assets/dhishna_brochure.pdf";
 
 const About = () => {
   return (
@@ -13,19 +14,28 @@ const About = () => {
         </p>
         <p className="text-white font-normal md:text-[18px] max-w-6xl text-sm sm:text-base tracking-wider ">
           "Be the catalyst for the future we envision, design, and unite to
-          create." Step into a world where brilliance converges, where
-          electrifying challenges beckon, and innovation unfurls like a vibrant
-          kaleidoscope. Dhishna, the flagship techfest of SOE, CUSAT, is where
-          the synergy of our seven specialized engineering branches sets ablaze
-          an intellectual fire, untainted from the mundane constraints of
-          today's world. Our unwavering mission is to transcend conventional
-          learning, offering you a stage that not only nurtures your creativity
-          but also ignites an insatiable passion for technology.
+          create."
+          <br></br> Discover a world where brilliance converges, challenges
+          electrify, and innovation unfolds in vibrant splendor. Dhishna, SOE,
+          CUSAT's flagship techfest, ignites intellectual fires through our
+          seven specialized engineering branches, free from today's constraints.
+          Our mission is to transcend conventional learning, nurturing your
+          creativity and sparking an insatiable tech passion. Join us as campus
+          ambassadors. Together, we'll elevate Dhishna, redefine tech, and
+          create a brighter tomorrow! Welcome to the realm of Dhishna, where
+          innovation knows no bounds. Join us in shaping the future.
         </p>
 
         <p className="text-white font-bold text-[18px] max-w-xl tracking-wide">
           We present to you, Dhishna.
         </p>
+      </div>
+      <div className="items-center text-center">
+        <a href={brochure} download="Brochure">
+          <button className="whiteCornerCutBtn rounded-[5px] border-2 border-white ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-white text-center font-bold text-md text-xl">
+            Download Brochure
+          </button>
+        </a>
       </div>
       <div className="left-glow z-[2] relative h-56 "></div>
     </div>
