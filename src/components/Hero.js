@@ -47,10 +47,14 @@ const Hero = () => {
         </p>
         <div className="flex md:flex-row flex-col justify-center my-16">
           <a
-            href="/register"
+            // href="/register"
+            href={user && "/register"}
             className="flex md:flex-row flex-col justify-center hidden sm:flex"
           >
-            <button className="cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl">
+            <button
+              className="cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl"
+              onClick={!user && signInFn}
+            >
               REGISTER
             </button>
           </a>
