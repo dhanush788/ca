@@ -60,7 +60,7 @@ const Benefits = () => {
           BENEFITS AND REWARDS
         </h2>
         <h2 className=" text-[#E5F358] font-black md:text-[50px] sm:text-[46px] text-[38px] pb-6 tracking-wider">
-          PRICES WORTH ₹50K
+          PRIZES WORTH ₹50K
         </h2>
         <div className="w-full flex justify-around items-center max-w-7xl gap-y-6 flex-wrap py-10 ">
           {benefit.map((benefit, i) => (
