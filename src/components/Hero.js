@@ -55,7 +55,7 @@ const Hero = () => {
           CAMPUS AMBASSADOR
         </h1>
         <p className="text-center text-white font-md lg:text-3xl md:text-2xl text-md my-5">
-          Be the emissary of Dhishna 2023
+          Be the delegate of Dhishna 2023
         </p>
         <div className="flex md:flex-row flex-col justify-center my-16">
           <a
