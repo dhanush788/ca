@@ -1,7 +1,24 @@
 import React from "react";
 import CountUp from "react-countup";
+import { UserContext } from "../functions/auth/userContext";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../functions/auth/firebase";
+import { signInWithGoogle } from "../functions/auth/signIn";
+
 const Hero = () => {
   const [animateCountUp, setAnimateCountUp] = React.useState(false);
+  const { user, loading } = React.useContext(UserContext);
+  const [explore, setExplore] = React.useState(false);
+  const navigate = useNavigate();
+
+  const signOutFn = () => {
+    signOut(auth)
+      .then(() => navigate("/"))
+      .catch((e) => console.log(e));
+  };
+  const signInFn = signInWithGoogle(() => navigate("/register"));
+
   React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 50) {
@@ -16,6 +33,17 @@ const Hero = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  React.useEffect(() => {
+    if (explore) {
+      window.scrollTo({
+        top: 950,
+        behavior: "smooth",
+      });
+      setExplore(false);
+    }
+  }, [explore]);
+
   return (
     <div className="spacebg h-[100%]">
       <div className="px-8 md:px-20 py-10 ">
@@ -27,19 +55,36 @@ const Hero = () => {
           CAMPUS AMBASSADOR
         </h1>
         <p className="text-center text-white font-md lg:text-3xl md:text-2xl text-md my-5">
-          Be the emissary of Dhishna 2023
+          Be the delegate of Dhishna 2023
         </p>
         <div className="flex md:flex-row flex-col justify-center my-16">
           <a
-            href="/register"
-            className="flex md:flex-row flex-col justify-center"
+            // href="/register"
+            href={user && "/register"}
+            className="flex md:flex-row flex-col justify-center hidden sm:flex"
           >
-            <button className="cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl">
+            <button
+              className="cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl"
+              onClick={!user && signInFn}
+            >
               REGISTER
             </button>
           </a>
+          {!user && (
+            <div className="flex md:flex-row flex-col justify-center sm:hidden">
+              <button
+                className="cornerCutBtn rounded-[5px] ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-black text-center font-bold text-md md:text-xl"
+                onClick={user ? signOutFn : signInFn}
+              >
+                {user ? "SIGN OUT" : "SIGN IN"}
+              </button>
+            </div>
+          )}
 
-          <button className="whiteCornerCutBtn rounded-[5px] border-2 border-white ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-white text-center font-bold text-md text-xl">
+          <button
+            className="whiteCornerCutBtn rounded-[5px] border-2 border-white ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-black bg-opacity-40 hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 text-white text-center font-bold text-md text-xl"
+            onClick={() => setExplore(true)}
+          >
             EXPLORE
           </button>
         </div>
