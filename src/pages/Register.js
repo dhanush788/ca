@@ -11,6 +11,17 @@ import Verify from "../components/Verify";
 
 import bgregister from "../assets/bgregister.jpg";
 
+
+function generateUID() {
+    // I generate the UID from two parts here
+    // to ensure the random number provide enough bits.
+    var firstPart = (Math.random() * 46656) | 0;
+    var secondPart = (Math.random() * 46656) | 0;
+    firstPart = ("000" + firstPart.toString(36)).slice(-3);
+    secondPart = ("000" + secondPart.toString(36)).slice(-3);
+    return firstPart + secondPart;
+}
+
 const Register = () => {
   const { user, loading } = React.useContext(UserContext);
 
@@ -73,8 +84,10 @@ const Register = () => {
       // Create a human-readable date and time string
       const formattedDateTime = `${Year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
+
       const data = {
         name: name,
+        refferal: generateUID(),
         email: email,
         phone: phone,
         college: college,
