@@ -4,7 +4,7 @@ import useFirebaseAuth from "./functions/auth/useFirebaseAuth";
 import {BrowserRouter} from 'react-router-dom';
 import './App.css';
 import AllRoutes from "./routes/routes";
-
+import Referral from "./components/Refferal";
 
 function App() {
     const {user, loading} = useFirebaseAuth()
@@ -14,6 +14,7 @@ function App() {
         <BrowserRouter>
             <UserContext.Provider value={{user, loading}}>
                 <AllRoutes/>
+                {user && <Referral/>}
             </UserContext.Provider>
         </BrowserRouter>
     )
