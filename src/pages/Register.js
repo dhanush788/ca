@@ -35,12 +35,23 @@ const Register = () => {
   //wait message on submit
   const [wait, setWait] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [fileError, setFileError] = useState(false);
 
   const formRef = useRef(null);
 
   const uploadFile = () => {
     if (file === null) return Promise.resolve(null);
     const split = file.name.split(".");
+    const filesize = file.size / 1024;
+    console.log(filesize);
+    const maxfilesize = 2048;
+    if (filesize > maxfilesize) {
+      setFileError(true);
+      return;
+    } else {
+      setFileError(false);
+    } 
+    
     // const name = split.slice(0, -1).join("")
     const extension = split.slice(-1)[0];
     const fileRef = storageRef(
@@ -66,6 +77,7 @@ const Register = () => {
 
     try {
       const downloadUrl = await uploadFile();
+
 
       const dbRef = ref(db, "CA/" + user.uid);
 
@@ -236,6 +248,7 @@ const Register = () => {
                     required
                     type="file"
                     placeholder="College ID"
+                    accept="image/*" 
                     className="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hidden"
                     id="upload"
                     onChange={(e) => {
@@ -263,6 +276,7 @@ const Register = () => {
                     Upload file
                   </button>
                 </div>
+                  {fileError && <p className="text-red-600">*Filesize Exceeded!! 2mb expected</p>}
               </div>
               <div className="flex flex-col items-center my-5">
                 <p className="text-white font-bold font-sans">
@@ -283,7 +297,7 @@ const Register = () => {
                 </button>
               </div>
             </form>
-            {wait && (
+            {wait && !fileError &&(
               <p className="text-white text-center font-sans font-semibold">
                 Submitting form...please wait
               </p>
