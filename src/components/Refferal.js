@@ -10,13 +10,22 @@ export default function Referral() {
     const {user,} = useContext(UserContext)
 
     React.useEffect(() => {
-        onValue(ref(db, '/CA/' + user.uid), (snapshot) => {
-            const refer = (snapshot.val() && snapshot.val().refferal);
-            setReferral(refer);
+        fetch(process.env.REACT_APP_API_URL+"api/ca/getref",{
+            headers:{
+                Authorization:user.token
+            },
+            method: "POST",
+            // mode: 'no-cors',
+            }).then(res=>res.json()).then((data=>{
+            setReferral(data.referral);
+        }))
+        // onValue(ref(db, '/CA/' + user.uid), (snapshot) => {
+        //     const refer = (snapshot.val() && snapshot.val().refferal);
+        //     setReferral(refer);
 
-        }, {
-            onlyOnce: true
-        });
+        // }, {
+        //     onlyOnce: true
+        // });
     }, [])
 
     console.log(visible)

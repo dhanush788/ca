@@ -1,12 +1,12 @@
-import React, {useState, useRef} from "react";
-import {db} from "../functions/auth/firebase";
-import {ref, set, push} from "firebase/database";
-import {storage} from "../functions/auth/firebase";
-import {getDownloadURL, ref as storageRef} from "firebase/storage";
-import {uploadBytes} from "firebase/storage";
-import {v4} from "uuid";
-import {notRegistered} from "../functions/auth/signIn";
-import {UserContext} from "../functions/auth/userContext";
+import React, { useState, useRef } from "react";
+import { auth, db } from "../functions/auth/firebase";
+import { ref, set, push } from "firebase/database";
+import { storage } from "../functions/auth/firebase";
+import { getDownloadURL, ref as storageRef } from "firebase/storage";
+import { uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
+import { notRegistered } from "../functions/auth/signIn";
+import { UserContext } from "../functions/auth/userContext";
 import Verify from "../components/Verify";
 
 import bgregister from "../assets/bgregister.jpg";
@@ -23,7 +23,7 @@ function generateUID() {
 }
 
 const Register = () => {
-    const {user, loading} = React.useContext(UserContext);
+    const { user, loading } = React.useContext(UserContext);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState(user.email);
@@ -62,54 +62,73 @@ const Register = () => {
         setWait(true);
 
         try {
-            const downloadUrl = await uploadFile();
+            const data = new FormData(formRef.current)
+            data.append("email", email)
+            console.log(Object.fromEntries(data))
 
-            const dbRef = ref(db, "CA/" + user.uid);
-
-            const data = {
-                name: name,
-                refferal: generateUID(),
-                email: email,
-                phone: phone,
-                college: college,
-                year: year,
-                fileUrl: downloadUrl,
-            };
-
-            await set(dbRef, data);
-
-            const request = new Request("https://actions.dhishna.org/reg", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Specify JSON content type
-                },
-                body: JSON.stringify({id: user.uid}), // Convert data to JSON string
+            auth.currentUser.getIdToken().then(function (idToken) {
+                // Send token to your backend via HTTPS
+                fetch(process.env.REACT_APP_API_URL+"api/ca/", {
+                    method: 'post',
+                    body: data,
+                    headers: {
+                        Authorization: idToken
+                    }
+                });
+                // ...
+            }).catch(function (error) {
+                // Handle error
             });
 
-            // Send the POST request
-            fetch(request)
-                .then(response => {
-                    if (response.ok) {
-                        return // Parse response JSON if the request was successful
-                    } else {
-                        throw new Error('Failed to send mail');
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                });
 
-            formRef.current.reset();
+            // const downloadUrl = await uploadFile();
 
-            setName("");
-            setEmail("");
-            setPhone("");
-            setCollege("");
-            setYear("");
-            setFile(null);
+            // const dbRef = ref(db, "CA/" + user.uid);
+
+            // const data = {
+            //     name: name,
+            //     refferal: generateUID(),
+            //     email: email,
+            //     phone: phone,
+            //     college: college,
+            //     year: year,
+            //     fileUrl: downloadUrl,
+            // };
+
+            // await set(dbRef, data);
+
+            // const request = new Request("https://actions.dhishna.org/reg", {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json', // Specify JSON content type
+            //     },
+            //     body: JSON.stringify({id: user.uid}), // Convert data to JSON string
+            // });
+
+            // // Send the POST request
+            // fetch(request)
+            //     .then(response => {
+            //         if (response.ok) {
+            //             return // Parse response JSON if the request was successful
+            //         } else {
+            //             throw new Error('Failed to send mail');
+            //         }
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
+
+            // formRef.current.reset();
+
+            // setName("");
+            // setEmail("");
+            // setPhone("");
+            // setCollege("");
+            // setYear("");
+            // setFile(null);
             setWait(false);
 
-            setShowForm(false);
+            // setShowForm(false);
         } catch (error) {
             console.log("submission failed. error:", error);
         }
@@ -129,17 +148,17 @@ const Register = () => {
             />
             <div
                 className="absolute flex flex-col items-center mt-10 z-10"
-                // style={{
-                //   position: "absolute",
-                //   //   padding: "2rem",
-                //   marginTop: "1rem",
-                //   //   width: "50%",
-                //   //   height: "120vh",
-                //   display: "flex",
-                //   flexDirection: "column",
-                //   alignItems: "center",
-                //   zIndex: 10,
-                // }}
+            // style={{
+            //   position: "absolute",
+            //   //   padding: "2rem",
+            //   marginTop: "1rem",
+            //   //   width: "50%",
+            //   //   height: "120vh",
+            //   display: "flex",
+            //   flexDirection: "column",
+            //   alignItems: "center",
+            //   zIndex: 10,
+            // }}
             >
                 <h1 className="text-white font-sans font-bold tracking-widest md:text-4xl text-2xl my-3">
                     DHISHNA
@@ -152,6 +171,7 @@ const Register = () => {
                         <form onSubmit={handleSubmit} ref={formRef}>
                             <div className="mt-10">
                                 <input
+                                    name="name"
                                     required
                                     className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                                     placeholder="Name"
@@ -164,6 +184,7 @@ const Register = () => {
 
                             <div className="mt-10">
                                 <input
+                                    name="email"
                                     required
                                     className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                                     placeholder="Email"
@@ -175,8 +196,9 @@ const Register = () => {
                                 />
                             </div>
 
-                            <div style={{marginTop: "2rem"}}>
+                            <div style={{ marginTop: "2rem" }}>
                                 <input
+                                    name="phone"
                                     required
                                     className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                                     placeholder="Phone"
@@ -187,9 +209,10 @@ const Register = () => {
                                 />
                             </div>
 
-                            <div style={{marginTop: "2rem"}}>
+                            <div style={{ marginTop: "2rem" }}>
                                 <input
                                     required
+                                    name="college"
                                     className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                                     placeholder="College"
                                     value={college}
@@ -199,8 +222,9 @@ const Register = () => {
                                 />
                             </div>
 
-                            <div style={{marginTop: "2rem"}}>
+                            <div style={{ marginTop: "2rem" }}>
                                 <input
+                                    name="year"
                                     required
                                     className="bg-transparent border border-neutral-400 text-white placeholder:text-neutral-400 text-md rounded-lg focus:ring-white focus:border-white block w-full p-3 dark:bg-transparent dark:focus:ring-blue-500 "
                                     placeholder="Year"
@@ -210,10 +234,11 @@ const Register = () => {
                                     }}
                                 />
                             </div>
-                            <div style={{marginTop: "2rem"}}>
+                            <div style={{ marginTop: "2rem" }}>
                                 <div
                                     className="flex flex-row bg-transparent border border-gray-300 dark:border-gray-500 rounded-xl p-2 my-3">
                                     <input
+                                        name="verification"
                                         required
                                         type="file"
                                         placeholder="College ID"
@@ -225,11 +250,10 @@ const Register = () => {
                                     />
                                     <input
                                         type="text"
-                                        className={`bg-transparent text-sm font-sans bg-transparent dark:border-gray-500 w-4/5 md:w-1/2 ${
-                                            file && file
-                                                ? "text-black dark:text-white"
-                                                : "text-gray-400"
-                                        }`}
+                                        className={`bg-transparent text-sm font-sans bg-transparent dark:border-gray-500 w-4/5 md:w-1/2 ${file && file
+                                            ? "text-black dark:text-white"
+                                            : "text-gray-400"
+                                            }`}
                                         value={file && file.name ? file.name : "College ID"}
                                         disabled
                                     />
@@ -273,7 +297,7 @@ const Register = () => {
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center h-48">
-                        <Verify/>
+                        <Verify />
                     </div>
                 )}
             </div>
