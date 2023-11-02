@@ -25,41 +25,44 @@ function generateUID() {
 const Register = () => {
     const { user, loading } = React.useContext(UserContext);
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState(user.email);
-    const [phone, setPhone] = useState("");
-    const [college, setCollege] = useState("");
-    const [year, setYear] = useState("");
-    const [file, setFile] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState("");
+  const [college, setCollege] = useState("");
+  const [year, setYear] = useState("");
+  const [file, setFile] = useState(null);
 
-    //wait message on submit
-    const [wait, setWait] = useState(false);
-    const [showForm, setShowForm] = useState(true);
+  //wait message on submit
+  const [wait, setWait] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
-    const formRef = useRef(null);
+  const formRef = useRef(null);
 
-    const uploadFile = () => {
-        if (file === null) return Promise.resolve(null);
-        const split = file.name.split('.');
-        // const name = split.slice(0, -1).join("")
-        const extension = split.slice(-1)[0]
-        const fileRef = storageRef(storage, `collegeID/${user.email}-${user.uid}.${extension}`);
+  const uploadFile = () => {
+    if (file === null) return Promise.resolve(null);
+    const split = file.name.split(".");
+    // const name = split.slice(0, -1).join("")
+    const extension = split.slice(-1)[0];
+    const fileRef = storageRef(
+      storage,
+      `collegeID/${user.email}-${user.uid}.${extension}`
+    );
 
-        // Return the promise chain here
-        return uploadBytes(fileRef, file)
-            .then((snapshot) => {
-                console.log("Image uploaded");
-                return getDownloadURL(snapshot.ref);
-            })
-            .catch((error) => {
-                console.log("Upload failed", error);
-                throw error;
-            });
-    };
+    // Return the promise chain here
+    return uploadBytes(fileRef, file)
+      .then((snapshot) => {
+        console.log("Image uploaded");
+        return getDownloadURL(snapshot.ref);
+      })
+      .catch((error) => {
+        console.log("Upload failed", error);
+        throw error;
+      });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setWait(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setWait(true);
 
         try {
             const data = new FormData(formRef.current)

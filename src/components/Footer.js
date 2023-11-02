@@ -20,7 +20,7 @@ const Footer = () => {
               </button>
             </a>
           </div>
-          <div className=" pb-10 z-[2]">
+          <div className=" pb-10 z-[2] md:mr-10">
             <img
               src={logo}
               alt="logo"

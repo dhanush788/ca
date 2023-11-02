@@ -13,8 +13,8 @@ const JoinUs = () => {
         TO BE A PART OF THE BIGGEST TECH FEST IN SOUTH INDIA
       </h4>
       <div className="flex justify-center">
-        <a href="/register" className="w-full flex justify-center">
-          <div className="ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white border-4 border-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out my-20 md:w-[30%] w-[50%] ">
+        <a href="/register" className="flex w-1/2 md:w=[30%] justify-center">
+          <div className="ml-10 cursor-pointer group mr-10 md:px-16 px-5 py-4 bg-white border-4 border-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out my-20  w-[100%] ">
             <p className="text-black text-center font-bold text-center text-lg md:text-xl">
               REGISTER
             </p>
