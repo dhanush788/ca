@@ -37,29 +37,7 @@ const Register = () => {
   const [showForm, setShowForm] = useState(true);
 
   const formRef = useRef(null);
-
-  const uploadFile = () => {
-    if (file === null) return Promise.resolve(null);
-    const split = file.name.split(".");
-    // const name = split.slice(0, -1).join("")
-    const extension = split.slice(-1)[0];
-    const fileRef = storageRef(
-      storage,
-      `collegeID/${user.email}-${user.uid}.${extension}`
-    );
-
-    // Return the promise chain here
-    return uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        console.log("Image uploaded");
-        return getDownloadURL(snapshot.ref);
-      })
-      .catch((error) => {
-        console.log("Upload failed", error);
-        throw error;
-      });
-  };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setWait(true);
