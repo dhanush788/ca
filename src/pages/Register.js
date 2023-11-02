@@ -70,7 +70,6 @@ const Register = () => {
             console.log(Object.fromEntries(data))
 
             auth.currentUser.getIdToken().then(function (idToken) {
-                // Send token to your backend via HTTPS
                 fetch(process.env.REACT_APP_API_URL+"api/ca/", {
                     method: 'post',
                     body: data,
@@ -78,60 +77,14 @@ const Register = () => {
                         Authorization: idToken
                     }
                 });
-                // ...
             }).catch(function (error) {
-                // Handle error
             });
 
 
-            // const downloadUrl = await uploadFile();
+            setEmail("");
 
-            // const dbRef = ref(db, "CA/" + user.uid);
-
-            // const data = {
-            //     name: name,
-            //     refferal: generateUID(),
-            //     email: email,
-            //     phone: phone,
-            //     college: college,
-            //     year: year,
-            //     fileUrl: downloadUrl,
-            // };
-
-            // await set(dbRef, data);
-
-            // const request = new Request("https://actions.dhishna.org/reg", {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json', // Specify JSON content type
-            //     },
-            //     body: JSON.stringify({id: user.uid}), // Convert data to JSON string
-            // });
-
-            // // Send the POST request
-            // fetch(request)
-            //     .then(response => {
-            //         if (response.ok) {
-            //             return // Parse response JSON if the request was successful
-            //         } else {
-            //             throw new Error('Failed to send mail');
-            //         }
-            //     })
-            //     .catch(error => {
-            //         console.error(error);
-            //     });
-
-            // formRef.current.reset();
-
-            // setName("");
-            // setEmail("");
-            // setPhone("");
-            // setCollege("");
-            // setYear("");
-            // setFile(null);
             setWait(false);
 
-            // setShowForm(false);
         } catch (error) {
             console.log("submission failed. error:", error);
         }
