@@ -35,6 +35,7 @@ const Register = () => {
   //wait message on submit
   const [wait, setWait] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [fileError, setFileError] = useState(false);
 
   const formRef = useRef(null);
   
