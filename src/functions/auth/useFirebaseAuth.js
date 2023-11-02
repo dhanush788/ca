@@ -3,7 +3,8 @@ import { auth } from './firebase';
 
 const formatAuthUser = (user) => ({
     uid: user.uid,
-    email: user.email
+    email: user.email,
+    token: user.accessToken
 });
 
 export default function useFirebaseAuth() {
@@ -16,7 +17,7 @@ export default function useFirebaseAuth() {
             setAuthUser(null)
             setLoading(false)
             return;
-        }
+        }   
 
         var formattedUser = formatAuthUser(authState);
         setAuthUser(formattedUser);
