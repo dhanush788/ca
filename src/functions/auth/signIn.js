@@ -26,20 +26,5 @@ export const signInWithGoogle = (onSuccess = () => {
 
 
 export async function notRegistered(user) {
-    const userId = user.uid;
-    const dbRef = ref(db)
-
-    try {
-        const snapshot = await get(child(dbRef, `CA/${userId}`));
-        if (snapshot.exists()) {
-            return false;
-        } else {
-            return true;
-        }
-    } catch (e) {
-        console.error(e);
-        return true;
-    }
-
-
+   return !user.referral 
 }

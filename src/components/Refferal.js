@@ -9,26 +9,8 @@ export default function Referral() {
     const [referral, setReferral] = useState(false)
     const {user,} = useContext(UserContext)
 
-    React.useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL+"api/ca/getref",{
-            headers:{
-                Authorization:user.token
-            },
-            method: "POST",
-            // mode: 'no-cors',
-            }).then(res=>res.json()).then((data=>{
-            setReferral(data.referral);
-        }))
-        // onValue(ref(db, '/CA/' + user.uid), (snapshot) => {
-        //     const refer = (snapshot.val() && snapshot.val().refferal);
-        //     setReferral(refer);
 
-        // }, {
-        //     onlyOnce: true
-        // });
-    }, [])
 
-    console.log(visible)
     return (
         <>
             <div style={{top: "90%", left: 0, position:"absolute"}}>
@@ -44,7 +26,7 @@ export default function Referral() {
                         Referral›
                     </button>
                     <Collapse orientation="horizontal" in={visible}>
-                        <div className="flex items-center px-2" style={{backgroundColor: "#00000000", color:"white",border:"1px white solid", height:"100%"}}>{referral}</div>
+                        <div className="flex items-center px-2" style={{backgroundColor: "#00000000", color:"white",border:"1px white solid", height:"100%"}}>{user?.referral}</div>
                     </Collapse>
                 </div>
             </div>
