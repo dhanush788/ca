@@ -217,7 +217,7 @@ const Register = () => {
                                 </p>
                             </div> */}
                             <div className="flex flex-col items-center mt-10">
-                                <button type="submit" disabled={wait} style={{opacity:wait?0.5:0}}>
+                                <button type="submit" disabled={wait} style={{opacity:wait?0.5:1}}>
                                     <div
                                         className="ml-10 cursor-pointer group mr-10 md:px-10 px-4 py-3 bg-white hover:-translate-x-2 hover:-translate-y-2 transform transition-transform duration-200 ease-in-out mb-10 rounded-md rounded-tl-2xl rounded-br-2xl">
                                         {/* <div class="absolute top-0 left-0 w-8 h-8 bg-purple-950 transform rotate-45 -translate-x-7 -translate-y-5"></div>
